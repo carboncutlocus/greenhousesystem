@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body, html { height: 100%; font-family: Arial, sans-serif; }
+    body {
+      background: url('https://img.freepik.com/premium-photo/futuristic-farming-smart-robotic-arm-watering-plants_189959-19980.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container { display: flex; width: 100%; height: 100%; }
+    .left-side {
+      flex: 1; display: flex; justify-content: center; align-items: center; padding: 40px;
+    }
+    .left-side h1 {
+      font-size: 70px; font-weight: bold; text-align: center; color: #00ff88;
+      line-height: 1.2; padding: 20px 40px; border-radius: 15px;
+      background: rgba(0,0,0,0.7); text-shadow: 0 0 20px #00ff88, 0 0 40px #00ff88;
+      box-shadow: 0 0 25px rgba(0,0,0,0.9);
+    }
+    .right-side {
+      flex: 1; background: rgba(0, 0, 0, 0.92); display: flex; justify-content: center; align-items: center;
+    }
+    .login-box {
+      width: 350px; padding: 40px 35px; border: 2px solid #00ff88; border-radius: 12px;
+      background: rgba(0, 0, 0, 0.9); box-shadow: 0 0 25px #00ff88;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .login-box h2 {
+      margin-bottom: 25px; font-size: 26px; color: #00ff88; text-shadow: 0 0 8px #00ff88;
+    }
+    .login-box input {
+      width: 100%; max-width: 280px; padding: 14px; margin: 10px 0;
+      border: 2px solid #00ff88; background: black; color: #00ff88;
+      font-size: 15px; border-radius: 30px; outline: none; text-align: center;
+      box-shadow: inset 0 0 8px rgba(0,255,136,0.4); transition: 0.3s;
+    }
+    .login-box input:focus { box-shadow: 0 0 12px #00ff88; }
+    .login-box input::placeholder { color: #00ff88; opacity: 0.8; }
+    .login-box button {
+      width: 100%; max-width: 280px; padding: 14px; margin-top: 20px;
+      background: #00ff88; border: none; border-radius: 30px; font-size: 16px; font-weight: bold;
+      cursor: pointer; color: black; letter-spacing: 1px; text-shadow: 0 0 4px #000;
+      box-shadow: 0 0 12px #00ff88; transition: 0.3s;
+    }
+    .login-box button:hover { background: #00cc66; box-shadow: 0 0 18px #00ff88; }
+    .error { margin-top: 12px; color: #ff4444; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left-side">
+      <h1>AUTOMATED <br> GREENHOUSE <br> MONITORING</h1>
+    </div>
+    <div class="right-side">
+      <div class="login-box">
+        <h2>LOG IN</h2>
+        <form id="loginForm">
+          <input type="text" id="username" placeholder="Username" required>
+          <input type="password" id="password" placeholder="Password" required>
+          <button type="submit">LOG IN</button>
+          <p id="errorMsg" class="error"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const validUser = "admin";
+    const validPass = "1234";
+
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+      const errorMsg = document.getElementById("errorMsg");
+
+      if (user === validUser && pass === validPass) {
+        localStorage.setItem("loggedIn", "true"); // Save login session
+        window.location.href = "ADVANCE.html";
+      } else {
+        errorMsg.textContent = "Invalid username or password!";
+      }
+    });
+  </script>
+</body>
+</html>
